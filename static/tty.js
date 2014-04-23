@@ -85,13 +85,13 @@ tty.open = function() {
 
   if (open) {
     on(open, 'click', function() {
-      new Window(false, '/home/digerpaji/ggw/automagic/automagic');
+      new Window(false, '/var/www/general-goods/automagic/automagic');
     });
   }
   
   if(convert) {
 	on(convert, 'click', function() {
-      new Window(false, '/home/digerpaji/ggw/automagic/automagic-convert');
+      new Window(false, '/var/www/general-goods/automagic/automagic-convert');
     });
   }
   if(typeof $ != 'undefined') {
@@ -99,7 +99,7 @@ tty.open = function() {
 		$(this).data('import_started', true);
 		$(this).attr('disabled', true);
 
-		new Window(false, '/home/digerpaji/ggw/automagic/util/drupal_import');
+		new Window(false, '/var/www/general-goods/automagic/util/drupal_import');
 	});
   }
 
