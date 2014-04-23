@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cat /home/digerpaji/ggw/automagic/util/clean | ssh -i/home/digerpaji/.ssh/id_rsa_ggw digerpaji@192.168.1.144 'bash -s'
+/home/digerpaji/ggw/automagic/util/transfer
+cat /home/digerpaji/ggw/automagic/util/rename | ssh -i/home/digerpaji/.ssh/id_rsa_ggw digerpaji@192.168.1.144 'bash -s'

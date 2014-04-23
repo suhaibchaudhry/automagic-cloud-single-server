@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+dosemu -input 'cd POS\rP000.exe\r'

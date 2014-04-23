@@ -1,0 +1,78 @@
+#!/usr/bin/env node
+var tty = require('tty.js');
+var fs = require('fs');
+var rmdir = require('./node_modules/rimraf');
+var express = require('./node_modules/tty.js/node_modules/express');
+
+var app = tty.createServer({
+  shell: 'bash',
+  //shellArgs: ["/home/digerpaji/ggw/automagic/automagic"],
+//  users: {
+//    foo: 'bar'
+//  },
+  static: '/var/www/general-goods/automagic/static',
+  port: 8000,
+  "term" : {
+      termName: "xterm",
+      geometry: [80, 25],
+      scrollback: 2000
+   }
+  //shellArgs: ["ls"]
+});
+//app.use(express.limit(1000000000));
+
+//app.get('/instances', function() {
+//});
+
+app.get('/exports', function(req, res, next) {
+  //res.send('bar');
+  fs.readdir('/var/www/general-goods/.dosemu/drive_c/exports', function(err, ls) {
+    res.send(ls);
+  });
+});
+
+app.get('/delete-exports', function(req, res, next) {
+  rmdir('/var/www/general-goods/.dosemu/drive_c/exports', function(error) {
+	fs.mkdirSync('/var/www/general-goods/.dosemu/drive_c/exports');
+	res.send({status: 'ok'});
+  });
+  //fs.readdir('/var/www/general-goods/.dosemu/drive_c/exports', function(err, ls) {
+	//for(var i in ls) {
+		//fs.unlinkSync('/var/www/general-goods/.dosemu/drive_c/exports'+ls[i]);
+	//}
+	//fs.rmdirSync('/var/www/general-goods/.dosemu/drive_c/exports');
+  //});
+});
+/*
+app.get('/image-import', function(req, res, next) {
+	var content = '<!DOCTYPE HTML>';
+	content += '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Pos Image Sync</title>';
+	content += '<link rel="stylesheet" type="text/css" href="/pos_image_sync.css">';
+	content += '<link rel="stylesheet" href="style.css">';
+	content += '<script src="socket.io/socket.io.js"></script>';
+	content += '<script src="term.js"></script>';
+	content += '<script src="options.js"></script>';
+	content += '<script src="tty.js"></script>';
+	
+	content += '</head><body>';
+	content += '<a style="z-index: 9999; right: 40px; top: 150px;" id="open" href="#">Open Old POS</a>';
+	content += '<iframe style="z-index: -1;" src="http://import.general-goods.com/admin/pos-image-sync"></iframe>';
+	content += '</body></html>';
+
+	res.send(content);
+});
+*/
+
+app.post('/upload', function(req, res) {
+   //req.files.forEach(function (file) {
+   //   console.log(file);
+   //});
+   fs.readFile(req.files.file.path, function(err, data) {
+      var newPath = '/var/www/general-goods/.dosemu/drive_c/exports/'+req.files.file.name.toLowerCase();
+	  fs.writeFile(newPath, data, function(err) {
+		res.send({status: 'ok'});
+	  });
+   });
+});
+
+app.listen();

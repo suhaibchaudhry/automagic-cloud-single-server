@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+cd /home/digerpaji/ggw/data_exports/
+if [ $? -eq 0 ]; then
+ for f in *.csv; do mv "$f" "`echo $f | tr "[:lower:]" "[:upper:]"`"; done
+else
+ echo "Data Dir Not Found!"
+fi
+#Start Import
+cd /home/digerpaji/ggw/
+#./import_begin.sh
+./update_begin.sh

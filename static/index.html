@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>General Goods Legacy POS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="open">New POS Window +</button>
+<button id="convert">New Converter Window +</button>
+<button id="lights">Light Switch</button>
+<div class="help">
+<h4>Import/Export Info:</h4>
+<p><strong>Data Import Dir:</strong> C:\POS\GGW\</p>
+<p><strong>Data Export Dir:</strong> C:\EXPORTS\</p>
+<p>Files to Export:
+<ul>
+<li>VENDOR.DAT -> <span class="export-file">VENDOR.CSV</span></li>
+<li>LINE.DAT -> <span class="export-file">LINE.CSV</span></li>
+<li>ICFILE.DAT -> <span class="export-file">ICFILE.CSV</span></li>
+<li>CUSTOMER.DAT -> <span class="export-file">CUSTOMER.CSV</span></li>
+<li>CUST.DAT -> <span class="export-file">CUST.CSV</span></li>
+</ul>
+<button disabled="true" id="start-import">Start Import</button>
+<button id="delete-import">Delete Clarion Exports</button>
+</p>
+<p><div id="uploader">
+<form action="/upload" class="dropzone" id="dropzone-form-1"><div class="fallback"><input type="file" name="file" /></div></form>
+</div></p>
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+<script src="term.js"></script>
+<script src="options.js"></script>
+<script src="tty.js"></script>
+<script src="dropzone.js"></script>
+<script src="zepto.min.js"></script>
+<script src="import.js"></script>
+</body>
+</html>

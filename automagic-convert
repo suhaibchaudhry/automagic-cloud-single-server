@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+dosemu -input 'cd POS\rccvt.exe\r'

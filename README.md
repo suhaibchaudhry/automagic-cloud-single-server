@@ -1,0 +1,2 @@
+Automagic Virtualized Cloud Edition
+===================================

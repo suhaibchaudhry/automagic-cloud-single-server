@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+rm /home/digerpaji/ggw/data_exports/*.CSV /home/digerpaji/ggw/data_exports/*.csv
