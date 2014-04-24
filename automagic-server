@@ -20,7 +20,6 @@ var app = tty.createServer({
   //shellArgs: ["ls"]
 });
 //app.use(express.limit(1000000000));
-
 //app.get('/instances', function() {
 //});
 
@@ -47,7 +46,7 @@ app.get('/delete-exports', function(req, res, next) {
 app.get('/image-import', function(req, res, next) {
 	var content = '<!DOCTYPE HTML>';
 	content += '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Pos Image Sync</title>';
-	content += '<link rel="stylesheet" type="text/css" href="/pos_image_sync.css">';
+`	content += '<link rel="stylesheet" type="text/css" href="/pos_image_sync.css">';
 	content += '<link rel="stylesheet" href="style.css">';
 	content += '<script src="socket.io/socket.io.js"></script>';
 	content += '<script src="term.js"></script>';
@@ -64,9 +63,12 @@ app.get('/image-import', function(req, res, next) {
 */
 
 app.post('/upload', function(req, res) {
+   //console.log(req);
    //req.files.forEach(function (file) {
-   //   console.log(file);
+      //console.log(file);
    //});
+   //console.log(req);
+
    fs.readFile(req.files.file.path, function(err, data) {
       var newPath = '/var/www/general-goods/.dosemu/drive_c/exports/'+req.files.file.name;
 	  fs.writeFile(newPath, data, function(err) {
