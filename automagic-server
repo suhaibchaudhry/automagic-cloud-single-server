@@ -68,7 +68,7 @@ app.post('/upload', function(req, res) {
    //   console.log(file);
    //});
    fs.readFile(req.files.file.path, function(err, data) {
-      var newPath = '/var/www/general-goods/.dosemu/drive_c/exports/'+req.files.file.name.toLowerCase();
+      var newPath = '/var/www/general-goods/.dosemu/drive_c/exports/'+req.files.file.name;
 	  fs.writeFile(newPath, data, function(err) {
 		res.send({status: 'ok'});
 	  });
