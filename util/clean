@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rm /home/ggw/ggw/data_exports/*.CSV /home/ggw/ggw/data_export/*.csv
+#rm /home/ggw/ggw/data_exports/*.CSV /home/ggw/ggw/data_export/*.csv
