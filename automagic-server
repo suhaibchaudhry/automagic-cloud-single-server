@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var tty = require('tty.js');
 var fs = require('fs');
-var rmdir = require('./node_modules/rimraf');
+var rimraf = require('./node_modules/rimraf');
 var express = require('./node_modules/tty.js/node_modules/express');
 
 var app = tty.createServer({
@@ -31,7 +31,7 @@ app.get('/exports', function(req, res, next) {
 });
 
 app.get('/delete-exports', function(req, res, next) {
-  rmdir('/var/www/general-goods/.dosemu/drive_c/exports', function(error) {
+  rimraf('/var/www/general-goods/.dosemu/drive_c/exports', function(error) {
 	fs.mkdirSync('/var/www/general-goods/.dosemu/drive_c/exports');
 	res.send({status: 'ok'});
   });
