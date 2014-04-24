@@ -18,8 +18,12 @@ function scanImportableFiles() {
 	var import_button = $('#start-import');
 	$.get('/exports', function(data) {	
 		var disabled = false;
+		$.each(data, function(index, val) {
+			data[index] = val.toUpperCase();
+		});
+
 		$('span.export-file').each(function(index, val) {
-			var file = $(this).text().toLowerCase();
+			var file = $(this).text().toUpperCase();
 			if($.inArray(file, data) == -1) {
 				$(this).css('color', '#FF5656');
 				disabled = true;
